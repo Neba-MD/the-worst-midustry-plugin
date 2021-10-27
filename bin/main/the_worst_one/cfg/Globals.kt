@@ -194,6 +194,7 @@ object Globals {
                     delay(1000 * 10)
                     continue
                 }
+                val threadIds: LongArray = bean.findDeadlockedThreads() // Returns null if no threads are deadlocked.
 
                 val infos: Array<ThreadInfo> = bean.getThreadInfo(threadIds)
                 for (info in infos) {
@@ -202,6 +203,7 @@ object Globals {
                         print(elem)
                     }
                 }
+                delay(1000 * 60)
             }
         }
     }
